@@ -17,8 +17,8 @@ public class SubjectController {
     private SubjectService subjectService;
 
     @PostMapping("/subjects")
-    public SubjectDto addSubject(@RequestBody SubjectDto subject) {
-        return subjectService.createSubject(subject);
+    public SubjectDto addSubject(@RequestBody final SubjectDto subjectDto) {
+        return subjectService.createSubject(subjectDto);
     }
 
     @GetMapping("/subjects")

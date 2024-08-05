@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -41,12 +43,5 @@ public class Subject implements Serializable {
      *  Subject name.
      */
     private String name;
-
-    /**
-     *  List of students subscribed to this subject.
-     */
-    @OneToMany
-    @JoinColumn(name = "studentId", referencedColumnName = "id")
-    private List<Student> students;
 
 }

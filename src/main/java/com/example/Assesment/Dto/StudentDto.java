@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *  Wrapper class for student entity.
@@ -31,4 +32,9 @@ public class StudentDto implements Serializable {
      *  Student address.
      */
     private String address;
+
+    /**
+     *  Subject names.
+     */
+    private List<String> subjects;
 }
