@@ -11,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  *  Student entity.
  */
@@ -21,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "student")
-public class Student {
+public class Student implements Serializable {
 
     private static final long serialVersionUID = 4267128822521552717L;
 
