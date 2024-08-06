@@ -23,8 +23,8 @@ For a list of available endpoints,  check the Postman collection.
 - I was able to configure authentication part but failed to configure authorization part. So it'll hit any endpoint without authentication and authorization by bypassing spring security.
 - Due to concerns mentioned above, I was unable to implement JWT.
 - Working parts :
-  **adding student**
-  **adding subject**
-  **get all students**
-  **get all subjects**
+  **adding student**,
+  **adding subject**,
+  **get all students**,
+  **get all subjects**,
 - It is connected to H2 database so data will lost when application is stopped.
