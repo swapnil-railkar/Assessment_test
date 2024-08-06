@@ -18,6 +18,7 @@ public class StudentMapper implements Mapper<StudentDto, Student> {
         return Student.builder()
                 .name(studentDto.getName())
                 .address(studentDto.getAddress())
+                .role(studentDto.getRole())
                 .build();
 
     }
@@ -27,9 +28,10 @@ public class StudentMapper implements Mapper<StudentDto, Student> {
         final StudentDto studentDto =  StudentDto.builder()
                 .name(student.getName())
                 .address(student.getAddress())
+                .role(student.getRole())
                 .build();
 
-        if (!student.getSubjects().isEmpty()) {
+        if (Objects.nonNull(student.getSubjects()) && !student.getSubjects().isEmpty()) {
             final List<String> subjects = student.getSubjects().stream()
                     .map(Subject::getName).toList();
             studentDto.setSubjects(subjects);

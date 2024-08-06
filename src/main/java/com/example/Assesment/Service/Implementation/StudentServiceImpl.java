@@ -9,9 +9,12 @@ import com.example.Assesment.Repositories.SubjectRepository;
 import com.example.Assesment.Service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,11 +28,16 @@ public class StudentServiceImpl implements StudentService {
     private final SubjectRepository subjectRepository;
 
     @Override
-    public StudentDto create(StudentDto studentDto) {
-        validateSubjects(studentDto.getSubjects());
-        final Student student = studentMapper.convertToEntity(studentDto);
-        final List<Subject> subjects = subjectRepository.findByNameIn(studentDto.getSubjects());
-        student.setSubjects(subjects);
+    public StudentDto create(final Student student) {
+        if (Objects.nonNull(student.getSubjects())) {
+            final List<String> subjectNames = student.getSubjects().stream()
+                    .map(Subject::getName)
+                    .map(String::toLowerCase)
+                    .toList();
+            validateSubjects(subjectNames);
+            final List<Subject> subjects = subjectRepository.findByNameIn(subjectNames);
+            student.setSubjects(subjects);
+        }
         final Student savedStudent = studentRepository.save(student);
         return studentMapper.convertToDto(savedStudent);
     }

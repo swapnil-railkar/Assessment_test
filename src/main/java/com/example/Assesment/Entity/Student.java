@@ -1,7 +1,11 @@
 package com.example.Assesment.Entity;
 
+import com.example.Assesment.Dto.Role;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,6 +40,23 @@ public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    /**
+     *  username of student
+     */
+    @Column(unique = true)
+    private String userName;
+
+    /**
+     *  password
+     */
+    @Column(unique = true)
+    private String password;
+
+    /**
+     *  Role : student / admin
+     */
+    private String role;
 
     /**
      *  Student name.

@@ -1,6 +1,8 @@
 package com.example.Assesment.Dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +34,11 @@ public class StudentDto implements Serializable {
      *  Student address.
      */
     private String address;
+
+    /**
+     *  Role
+     */
+    private String role;
 
     /**
      *  Subject names.
